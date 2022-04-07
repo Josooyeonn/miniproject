@@ -18,12 +18,12 @@ public class BoardDao extends DAO implements BoardIF {
 		try {
 			psmt = conn.prepareStatement("SELECT * FROM board");
 			rs = psmt.executeQuery();
-			while (rs.next()) {
+ 			while (rs.next()) {
 				Board board = new Board();
 
 				board.setbNo(rs.getInt("b_no"));
 				board.setbTitle(rs.getString("b_Content"));
-	 			board.setbContent(rs.getString("b_title"));
+	 	 		board.setbContent(rs.getString("b_title"));
 				board.setbWriter(rs.getString("b_Writer"));
 				board.setbDate(rs.getString("b_Date"));
 
@@ -38,30 +38,26 @@ public class BoardDao extends DAO implements BoardIF {
 		}
 		return boards;
 
-	}
+	} 
 
 	// 게시글 등록
 
 	public boolean insert(Board bod) {
 
 	 	conn = getConnect();
-	 	String sql = "INSERT INTO board(b_title, b_writer, b_content, b_date, b_no) "
-				+ "VALUES ( ?, ? ,?, ?,(SELECT MAX (b_no)+1 " + "FROM board))";
-
+	 	String sql = "INSERT INTO board(b_no, b_title, b_writer, b_content, b_date)\r\n"
+	 			+ "VALUES ((SELECT NVL(MAX(b_no),0)+1 FROM board), ?, ?, ?, ?)";
 		try {
-			
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, bod.getbTitle());
-			psmt.setString(2, bod.getbWriter());
-			psmt.setString(3, bod.getbContent());
-			psmt.setString(4, bod.getbDate());
+ 	 		psmt.setString(2, bod.getbWriter());
+		  	psmt.setString(3, bod.getbContent());
+	 		psmt.setString(4, bod.getbDate());
 
 			int r = psmt.executeUpdate();
  
 			if (r > 0) {
-				System.out.println("\t\t==============================");
-				System.out.println("\t\t\t　　　" + r +"건 입력되었습니다.");
-				System.out.println("\t\t==============================");
+
 				return true;
 			}
 
@@ -71,9 +67,7 @@ public class BoardDao extends DAO implements BoardIF {
 			disconnect();
 
 		}				
-		System.out.println("=====================");
-		System.out.println("　중복 된 게시글 번호입니다.　");
-		System.out.println("=====================");
+		
 		return false;
 
 	}
@@ -89,23 +83,21 @@ public class BoardDao extends DAO implements BoardIF {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, board.getbTitle());
-			psmt.setString(2, board.getbWriter());
+	 		psmt.setString(2, board.getbWriter());
 			psmt.setString(3, board.getbContent());
 			psmt.setInt(4, board.getbNo());
 
 			int r = psmt.executeUpdate();
 
 			if (r > 0) {
-				System.out.println("=====================");
-				System.out.println(r + "건 수정되었습니다.");
-				System.out.println("=====================");
-				return true;
-			}
+		 		return true;
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		
 		return false;
 
 	}
@@ -117,15 +109,13 @@ public class BoardDao extends DAO implements BoardIF {
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, bno);
+	 		psmt.setInt(1, bno);
 
 			int r = psmt.executeUpdate();
 
 			if (r > 0) {
-				System.out.println("=====================");
-				System.out.println("　　　"+r + "건 삭제되었습니다.　　　");
-				System.out.println("=====================");
-				return true;
+
+	 			return true;
 			}
 
 		} catch (SQLException e) {
@@ -133,9 +123,7 @@ public class BoardDao extends DAO implements BoardIF {
 		} finally {
 			disconnect();
 		}
-		System.out.println("=====================");
-		System.out.println("존재하지 않는 게시글 번호입니다.");
-		System.out.println("=====================");
+
 		return false;
 
 		// 게시글 삭제
@@ -149,22 +137,22 @@ public class BoardDao extends DAO implements BoardIF {
 		String sql = "SELECT * FROM board WHERE b_title LIKE ?";
 		Board board = null;
 		List<Board> list = new ArrayList<Board>();
-		
 		try {
 			psmt = conn.prepareStatement(sql);
-	 		psmt.setString(1, '%'+name+'%');
-	 	 	rs = psmt.executeQuery();
- 	  		while (rs.next()) {
+ 	  		psmt.setString(1, '%'+name+'%');
+	  	 	rs = psmt.executeQuery();
+ 	   		while (rs.next()) {
 
 				board = new Board();
-
-	 			board.setbTitle(rs.getString("b_title"));
-				board.setbContent(rs.getString("b_content"));
+				
+				board.setbNo(rs.getInt("b_no"));
+	 	 		board.setbTitle(rs.getString("b_title"));
+	  		 	board.setbContent(rs.getString("b_content"));
 	 	  		board.setbWriter(rs.getString("b_writer"));
-				board.setbDate(rs.getString("b_Date"));
+			  	board.setbDate(rs.getString("b_Date"));
 
 				list.add(board);
-
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

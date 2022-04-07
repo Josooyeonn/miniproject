@@ -43,22 +43,32 @@ public class Board {
 	}
 
 
-	public Board(String bContent2, String bWriter2, String bTitle2, int num) {
-   	   	this.bContent = bContent2;
+	public Board(String bTitle2, String bWriter2, String bContent2, int num) {
   	   	this.bTitle = bTitle2;
-	 	this.bWriter = bWriter2;
+ 	 	this.bWriter = bWriter2;
+	 	this.bContent = bContent2;
 	 	this.bNo = num;
 		
 	}
 	
 	
-	public Board(int bNo, String bContent, String bTitle1, String bWriter, String bDate) {
+	
+	
+	public Board(String bTitle, String bContent, String bWriter, String bDate) {
+		super();
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bWriter = bWriter;
+		this.bDate = bDate;
+	}
 
-	 	this.bNo = bNo;
+	public Board(int bNo, String bTitle1,String bContent, String bWriter, String bDate) {
+
    	   	this.bContent = bContent;
 	   	this.bTitle = bTitle1;
 	 	this.bWriter = bWriter;
  		this.bDate = bDate;
+ 		this.bNo = bNo;
 	}
 	
 	public Board() {}
@@ -75,7 +85,7 @@ public class Board {
 		this.bNo = bNo;
 	}
 	public String getbTitle() {
-	 	return bTitle;
+	  	return bTitle;
 	}
 	public void setbTitle(String bTitle) {
 		this.bTitle = bTitle;
@@ -83,7 +93,7 @@ public class Board {
 	public String getbContent() {
 		return bContent;
 	}
-	public void setbContent(String bContent) {
+ 	public void setbContent(String bContent) {
 	 	this.bContent = bContent;
 	}
 	public String getbWriter() {

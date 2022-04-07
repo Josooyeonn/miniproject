@@ -20,13 +20,13 @@ public class BoardLogin extends DAO implements LoingIF {
 			psmt = conn.prepareStatement(sql);
 	 		psmt.setString(1, id);
 			psmt.setString(2, pw);
-			rs = psmt.executeQuery();
+		 	rs = psmt.executeQuery();
 
 			if (rs.next()) {
 				int r = psmt.executeUpdate();
 				if (r > 0) {
 	 				System.out.println("\t\t==============================");
-					System.out.println("\t\t\t　　　로그인 성공　　　　　");
+	 				System.out.println("\t\t\t　　　로그인 성공　　　　　");
 		 	 		System.out.println("\t\t==============================");
 					return true;
 				}
@@ -51,7 +51,7 @@ public class BoardLogin extends DAO implements LoingIF {
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 			rs = psmt.executeQuery();
-
+ 
 			if (rs.next()) {
 				check = rs.getString("b_id");
 
@@ -73,7 +73,7 @@ public class BoardLogin extends DAO implements LoingIF {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, join.getbId());
-	  		psmt.setString(2, join.getbPw());
+	  	 	psmt.setString(2, join.getbPw());
 
 			int r = psmt.executeUpdate();
 
