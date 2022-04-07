@@ -46,7 +46,7 @@ public class BoardExe {
 						System.out.println("\t\t------------------------------");
 						System.out.print("\t\t      메뉴를 선택해주세요. ▶ ");
 				 		menu = scn.nextInt();
-						System.out.println("\t\t------------------------------");
+	 					System.out.println("\t\t------------------------------");
  
 						if (menu == 1) {
 							List<Board> list = dao.boardList();
@@ -63,14 +63,14 @@ public class BoardExe {
 //							System.out.println("게시글 번호를 입력해주세요.");
 							System.out.print("\t\t      제목을 입력해주세요. > ");
 					 		bTitle = scn.next();
+					 		System.out.print("\t\t      내용을 입력해주세요. > ");
+					 		bContent = scn.next();
 							System.out.print("\t\t   작성자 명을 입력해주세요. > ");
 			 				bWriter = scn.next();
-							System.out.print("\t\t      내용을 입력해주세요. > ");
-							bContent = scn.next();
 							System.out.print("\t\t    작성 날짜를 입력해주세요. > ");
 							bDate = scn.next();
 
-							Board board = new Board(bTitle, bWriter,bContent, bDate);
+							Board board = new Board(bTitle, bContent, bWriter,bDate);
 
 							boolean tr = dao.insert(board);
 							

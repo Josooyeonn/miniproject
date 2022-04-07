@@ -22,9 +22,9 @@ public class BoardDao extends DAO implements BoardIF {
 				Board board = new Board();
 
 				board.setbNo(rs.getInt("b_no"));
-				board.setbTitle(rs.getString("b_Content"));
 	 	 		board.setbContent(rs.getString("b_title"));
 				board.setbWriter(rs.getString("b_Writer"));
+				board.setbTitle(rs.getString("b_Content"));
 				board.setbDate(rs.getString("b_Date"));
 
 				boards.add(board);
@@ -50,7 +50,7 @@ public class BoardDao extends DAO implements BoardIF {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, bod.getbTitle());
- 	 		psmt.setString(2, bod.getbWriter());
+ 	  		psmt.setString(2, bod.getbWriter());
 		  	psmt.setString(3, bod.getbContent());
 	 		psmt.setString(4, bod.getbDate());
 

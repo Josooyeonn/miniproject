@@ -72,7 +72,7 @@ public class BoardLogin extends DAO implements LoingIF {
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, join.getbId());
+	 		psmt.setString(1, join.getbId());
 	  	 	psmt.setString(2, join.getbPw());
 
 			int r = psmt.executeUpdate();

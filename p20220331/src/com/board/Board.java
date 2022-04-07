@@ -54,21 +54,22 @@ public class Board {
 	
 	
 	
-	public Board(String bTitle, String bContent, String bWriter, String bDate) {
+	public Board(String bTitle, String bWriter,String bContent, String bDate) {
 		super();
 		this.bTitle = bTitle;
 		this.bContent = bContent;
 		this.bWriter = bWriter;
 		this.bDate = bDate;
 	}
+	
 
-	public Board(int bNo, String bTitle1,String bContent, String bWriter, String bDate) {
+	public Board(int bNo,String bTitle1, String bWriter, String bContent, String bDate) {
 
-   	   	this.bContent = bContent;
-	   	this.bTitle = bTitle1;
-	 	this.bWriter = bWriter;
- 		this.bDate = bDate;
- 		this.bNo = bNo;
+		this.bContent = bContent;
+	    	this.bTitle = bTitle1;
+ 	 	this.bWriter = bWriter;
+ 	 	this.bDate = bDate;
+ 	 	this.bNo = bNo;
 	}
 	
 	public Board() {}
