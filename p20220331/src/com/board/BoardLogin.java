@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BoardLogin extends DAO implements LoingIF {
-	
+
 	Board board = new Board();
 	Scanner scn = new Scanner(System.in);
 	List<Board> boards = new ArrayList<Board>();
@@ -18,16 +18,16 @@ public class BoardLogin extends DAO implements LoingIF {
 
 		try {
 			psmt = conn.prepareStatement(sql);
-	 		psmt.setString(1, id);
+			psmt.setString(1, id);
 			psmt.setString(2, pw);
-		 	rs = psmt.executeQuery();
+			rs = psmt.executeQuery();
 
 			if (rs.next()) {
 				int r = psmt.executeUpdate();
 				if (r > 0) {
-	 				System.out.println("\t\t==============================");
-	 				System.out.println("\t\t\t　　　로그인 성공　　　　　");
-		 	 		System.out.println("\t\t==============================");
+					System.out.println("\t\t==============================");
+					System.out.println("\t\t\t　　　로그인 성공　　　　　");
+					System.out.println("\t\t==============================");
 					return true;
 				}
 			}
@@ -40,8 +40,8 @@ public class BoardLogin extends DAO implements LoingIF {
 		return false;
 	}
 
-	//오류 처리용
-	
+	// 오류 처리용
+
 	public String boardcheck(String id, String pw) {
 		conn = getConnect();
 		String sql = "SELECT b_id FROM BOARD_INFO WHERE b_id=? AND b_pw=?";
@@ -51,7 +51,7 @@ public class BoardLogin extends DAO implements LoingIF {
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 			rs = psmt.executeQuery();
- 
+
 			if (rs.next()) {
 				check = rs.getString("b_id");
 
@@ -72,14 +72,14 @@ public class BoardLogin extends DAO implements LoingIF {
 
 		try {
 			psmt = conn.prepareStatement(sql);
-	 		psmt.setString(1, join.getbId());
-	  	 	psmt.setString(2, join.getbPw());
+			psmt.setString(1, join.getbId());
+			psmt.setString(2, join.getbPw());
 
 			int r = psmt.executeUpdate();
 
 			if (r > 0) {
 				System.out.println("\t\t==============================");
-		  		System.out.println("\t\t   　　　회원 가입이 완료되었습니다.　");
+				System.out.println("\t\t   　　　회원 가입이 완료되었습니다.　");
 				System.out.println("\t\t==============================");
 				return true;
 			}

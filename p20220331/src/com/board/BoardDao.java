@@ -22,10 +22,10 @@ public class BoardDao extends DAO implements BoardIF {
 				Board board = new Board();
 
 				board.setbNo(rs.getInt("b_no"));
-	 	 		board.setbContent(rs.getString("b_title"));
+	 	 		board.setbContent(rs.getString("b_Content"));
 				board.setbWriter(rs.getString("b_Writer"));
-				board.setbTitle(rs.getString("b_Content"));
-				board.setbDate(rs.getString("b_Date"));
+ 	 	 		board.setbTitle(rs.getString("b_Title"));
+		 		board.setbDate(rs.getString("b_Date"));
 
 				boards.add(board);
 
@@ -50,7 +50,7 @@ public class BoardDao extends DAO implements BoardIF {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, bod.getbTitle());
- 	  		psmt.setString(2, bod.getbWriter());
+ 	   		psmt.setString(2, bod.getbWriter());
 		  	psmt.setString(3, bod.getbContent());
 	 		psmt.setString(4, bod.getbDate());
 
@@ -83,7 +83,7 @@ public class BoardDao extends DAO implements BoardIF {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, board.getbTitle());
-	 		psmt.setString(2, board.getbWriter());
+	  		psmt.setString(2, board.getbWriter());
 			psmt.setString(3, board.getbContent());
 			psmt.setInt(4, board.getbNo());
 
@@ -138,16 +138,16 @@ public class BoardDao extends DAO implements BoardIF {
 		Board board = null;
 		List<Board> list = new ArrayList<Board>();
 		try {
-			psmt = conn.prepareStatement(sql);
+	 		psmt = conn.prepareStatement(sql);
  	  		psmt.setString(1, '%'+name+'%');
-	  	 	rs = psmt.executeQuery();
+	   	  	rs = psmt.executeQuery();
  	   		while (rs.next()) {
 
 				board = new Board();
 				
-				board.setbNo(rs.getInt("b_no"));
+	 			board.setbNo(rs.getInt("b_no"));
 	 	 		board.setbTitle(rs.getString("b_title"));
-	  		 	board.setbContent(rs.getString("b_content"));
+	   		  	board.setbContent(rs.getString("b_content"));
 	 	  		board.setbWriter(rs.getString("b_writer"));
 			  	board.setbDate(rs.getString("b_Date"));
 
@@ -162,56 +162,5 @@ public class BoardDao extends DAO implements BoardIF {
 		return list;
 	}
 	
-//	public void boardCount(String bno) {
-//		conn = getConnect();
-//		String sql = "UPDATE b_title SET "
-//				+ "b_view = b_view+1 where b_no=1";
-//		try {psmt = conn.prepareStatement(sql);
-//			System.out.println(sql);
-//			psmt.executeUpdate();
-//		}
-//		catch(SQLException e) {
-//			
-//		} finally {
-//			disconnect();
-//		}
-//	}
-//	
-//	public List<Board> selectContent(String bno) {
-//
-//		conn = getConnect();
-//		String sql = "SELECT * FROM board WHERE b_bo LIKE ?";
-//		Board board = null;
-//		List<Board> list = new ArrayList<Board>();
-//		
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//	 		psmt.setString(1, bno);
-//	 	 	rs = psmt.executeQuery();
-// 	  		while (rs.next()) {
-//
-//				board = new Board();
-//
-//	 			board.setbTitle(rs.getString("b_title"));
-//				board.setbContent(rs.getString("b_content"));
-//	 	  		board.setbWriter(rs.getString("b_writer"));
-//				board.setbDate(rs.getString("b_Date"));
-//
-//				list.add(board);
-//
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally{
-//			disconnect();			
-//		}
-//		return list;
-//	}
-//	
-//	public void comment() {
-//		
-//		
-//		
-//	}
-//	
+
 }

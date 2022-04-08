@@ -31,14 +31,14 @@ public class Board {
 
 
 	public void setbPw(String bPw) {
-		this.bPw = bPw;
+	 	this.bPw = bPw;
 	}
 
 	
 
 	public Board(String bId, String bPw) {
 		super();
-		this.bId = bId;
+	  	this.bId = bId;
 		this.bPw = bPw;
 	}
 
@@ -46,33 +46,42 @@ public class Board {
 	public Board(String bTitle2, String bWriter2, String bContent2, int num) {
   	   	this.bTitle = bTitle2;
  	 	this.bWriter = bWriter2;
-	 	this.bContent = bContent2;
+ 	  	this.bContent = bContent2;
 	 	this.bNo = num;
 		
 	}
 	
+	public Board(String bTitle1, String bWriter, String bContent, String bDate)
+	{
+  	   	this.bTitle = bTitle1;
+  	 	this.bWriter = bWriter;
+	 	this.bContent = bContent;
+	   	this.bDate = bDate;
+	 	
+		
+ 	};
 	
 	
+//	
+//	public Board(String bTitle, String bWriter,String bContent, String bDate) {
+//		super();
+//	 	this.bTitle = bTitle;
+//	 	this.bWriter = bWriter;
+//		this.bContent = bContent;
+//		this.bDate = bDate;
+//	}
 	
-	public Board(String bTitle, String bWriter,String bContent, String bDate) {
-		super();
-		this.bTitle = bTitle;
-		this.bContent = bContent;
-		this.bWriter = bWriter;
-		this.bDate = bDate;
-	}
+//
+//	public Board(int bNo,String bTitle1, String bWriter, String bContent, String bDate) {
+//
+//		this.bContent = bContent;
+//	    	this.bTitle = bTitle1;
+// 	 	this.bWriter = bWriter; 
+// 	 	this.bDate = bDate;
+// 	 	this.bNo = bNo;
+//	}
 	
-
-	public Board(int bNo,String bTitle1, String bWriter, String bContent, String bDate) {
-
-		this.bContent = bContent;
-	    	this.bTitle = bTitle1;
- 	 	this.bWriter = bWriter;
- 	 	this.bDate = bDate;
- 	 	this.bNo = bNo;
-	}
-	
-	public Board() {}
+ 	public Board() {}
 //	}
 //		
 //	public Board(String title, String writer, String content, int num) {
@@ -80,7 +89,7 @@ public class Board {
 
 	
 	public int getbNo() {
-		return bNo;
+ 		return bNo;
 	}
 	public void setbNo(int bNo) {
 		this.bNo = bNo;
@@ -112,8 +121,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "　글 번호 : "+bNo+ " 글 제목 : " + bTitle +  " 글 내용 : " + bContent+ 
-				" 작성자 : " + bWriter+ " 작성일 : " + bDate;
+		return "　글 번호 : "+bNo+ " 글 제목 : " + bTitle + " 글 내용 : " + bContent+" 작성자 : " + bWriter+  " 작성일 : " + bDate;
 	}
 	
 	
